@@ -12,15 +12,7 @@ doc:
 		head -n 1 go.mod | sed 's/^module //' >> README.md && \
 		echo >> README.md && \
 		echo >> README.md && \
-		go doc -all github.com/mdwhatcott/go-collections/list  | sed 's/^/\t/' >> README.md && \
-		echo '---' >> README.md && \
-		echo >> README.md
-		go doc -all github.com/mdwhatcott/go-collections/queue  | sed 's/^/\t/' >> README.md && \
-		echo '---' >> README.md && \
-		echo >> README.md
-		go doc -all github.com/mdwhatcott/go-collections/set  | sed 's/^/\t/' >> README.md && \
-		echo '---' >> README.md && \
-		echo >> README.md
-		go doc -all github.com/mdwhatcott/go-collections/stack  | sed 's/^/\t/' >> README.md && \
-		echo '---' >> README.md && \
-		echo >> README.md
+		go doc -all github.com/mdwhatcott/go-set/set  | sed 's/^/\t/' >> README.md
+
+onefile:
+	@go-mergepkg -dirs "set" -header "github.com/mdwhatcott/go-set@$(shell git describe) (a little copy-paste is better than a little dependency)"

@@ -2,7 +2,7 @@
 // https://en.wikipedia.org/wiki/Set_(mathematics)
 package set
 
-type Set[T comparable] map[T]nothing
+type Set[T comparable] map[T]struct{}
 
 func New[T comparable](size int) Set[T] {
 	return make(Set[T], size)
@@ -34,7 +34,7 @@ func (s Set[T]) Slice() (result []T) {
 }
 func (s Set[T]) Add(items ...T) {
 	for _, item := range items {
-		s[item] = nothing{}
+		s[item] = struct{}{}
 	}
 }
 func (s Set[T]) Remove(items ...T) {
@@ -125,5 +125,3 @@ func (s Set[T]) SymmetricDifference(that Set[T]) (result Set[T]) {
 	}
 	return result
 }
-
-type nothing struct{}
