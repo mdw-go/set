@@ -4,11 +4,9 @@ package set
 
 type Set[T comparable] map[T]struct{}
 
-func New[T comparable](size int) Set[T] {
-	return make(Set[T], size)
-}
-func From[T comparable](items ...T) (result Set[T]) {
-	result = New[T](len(items))
+func Make[T comparable](size int) Set[T] { return make(Set[T], size) }
+func Of[T comparable](items ...T) (result Set[T]) {
+	result = Make[T](len(items))
 	result.Add(items...)
 	return result
 }
