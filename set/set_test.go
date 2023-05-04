@@ -4,8 +4,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/mdwhatcott/go-set/internal/should"
-	"github.com/mdwhatcott/go-set/set"
+	"github.com/mdwhatcott/go-set/v2/internal/should"
+	"github.com/mdwhatcott/go-set/v2/set"
 )
 
 func TestCreation(t *testing.T) {
