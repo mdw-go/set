@@ -4,11 +4,11 @@ package set
 
 type Set[T comparable] map[T]struct{}
 
-func Make[T comparable](size int) Set[T] { return make(Set[T], size) }
+func Make[T comparable](size int) Set[T] {
+	return make(Set[T], size)
+}
 func Of[T comparable](items ...T) (result Set[T]) {
-	result = Make[T](len(items))
-	result.Add(items...)
-	return result
+	return Make[T](len(items)).Add(items...)
 }
 func (s Set[T]) Empty() bool {
 	return s.Len() == 0
@@ -23,20 +23,23 @@ func (s Set[T]) Slice() (result []T) {
 	}
 	return result
 }
-func (s Set[T]) Add(items ...T) {
+func (s Set[T]) Add(items ...T) Set[T] {
 	for _, item := range items {
 		s[item] = struct{}{}
 	}
+	return s
 }
-func (s Set[T]) Remove(items ...T) {
+func (s Set[T]) Remove(items ...T) Set[T] {
 	for _, item := range items {
 		delete(s, item)
 	}
+	return s
 }
-func (s Set[T]) Clear() {
+func (s Set[T]) Clear() Set[T] {
 	for item := range s {
 		delete(s, item)
 	}
+	return s
 }
 func (s Set[T]) Contains(item T) bool {
 	_, found := s[item]

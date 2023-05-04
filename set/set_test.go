@@ -20,36 +20,31 @@ func TestContains(t *testing.T) {
 	should.So(t, set.Of[int]().Contains(1), should.BeFalse)
 }
 func TestAdd(t *testing.T) {
-	values := set.Make[int](0)
-	values.Add(1, 2, 3)
+	values := set.Of[int]().Add(1, 2, 3)
 	should.So(t, values.Contains(1), should.BeTrue)
 	should.So(t, values.Contains(2), should.BeTrue)
 	should.So(t, values.Contains(3), should.BeTrue)
 	should.So(t, values.Len(), should.Equal, 3)
 }
 func TestRemove(t *testing.T) {
-	values := set.Of[int](1, 2, 3)
-	values.Remove(2)
+	values := set.Of[int](1, 2, 3).Remove(2)
 	should.So(t, values.Contains(1), should.BeTrue)
 	should.So(t, values.Contains(2), should.BeFalse)
 	should.So(t, values.Contains(3), should.BeTrue)
 	should.So(t, values.Len(), should.Equal, 2)
 }
 func TestClear(t *testing.T) {
-	values := set.Of[int](1, 2, 3)
-	values.Clear()
+	values := set.Of[int](1, 2, 3).Clear()
 	should.So(t, values.Contains(1), should.BeFalse)
 	should.So(t, values.Contains(2), should.BeFalse)
 	should.So(t, values.Contains(3), should.BeFalse)
 	should.So(t, values.Len(), should.Equal, 0)
 }
 func TestSlice(t *testing.T) {
-	values := set.Of[int](1, 2, 3, 4, 5)
-	items := values.Slice()
+	items := set.Of[int](1, 2, 3, 4, 5).Slice()
 	sort.Slice(items, func(i, j int) bool {
 		return items[i] < items[j]
 	})
-	should.So(t, values.Len(), should.Equal, 5)
 	should.So(t, len(items), should.Equal, 5)
 	should.So(t, items, should.Equal, []int{1, 2, 3, 4, 5})
 }
