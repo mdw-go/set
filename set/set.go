@@ -89,11 +89,6 @@ func (s Set[T]) Intersection(that Set[T]) (result Set[T]) {
 			result.Add(item)
 		}
 	}
-	for item := range that {
-		if s.Contains(item) {
-			result.Add(item)
-		}
-	}
 	return result
 }
 func (s Set[T]) Difference(that Set[T]) (result Set[T]) {
