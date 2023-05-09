@@ -101,16 +101,5 @@ func (s Set[T]) Difference(that Set[T]) (result Set[T]) {
 	return result
 }
 func (s Set[T]) SymmetricDifference(that Set[T]) (result Set[T]) {
-	result = make(Set[T])
-	for item := range s {
-		if !that.Contains(item) {
-			result.Add(item)
-		}
-	}
-	for item := range that {
-		if !s.Contains(item) {
-			result.Add(item)
-		}
-	}
-	return result
+	return s.Difference(that).Union(that.Difference(s))
 }

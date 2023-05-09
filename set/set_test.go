@@ -73,7 +73,12 @@ func TestIntersection(t *testing.T) {
 }
 func TestDifference(t *testing.T) {
 	should.So(t, set.Of[int](1, 2, 3).Difference(set.Of[int](4, 5, 6)), should.Equal, set.Of[int](1, 2, 3))
+	should.So(t, set.Of[int](4, 5, 6).Difference(set.Of[int](1, 2, 3)), should.Equal, set.Of[int](4, 5, 6))
+	should.So(t, set.Of[int](1, 2, 3).Difference(set.Of[int](1, 2, 3)), should.Equal, set.Of[int]())
 	should.So(t, set.Of[int](1, 2, 3).Difference(set.Of[int](2, 3)), should.Equal, set.Of[int](1))
+	should.So(t, set.Of[int](1, 2, 3).Difference(set.Of[int](1)), should.Equal, set.Of[int](2, 3))
+	should.So(t, set.Of[int](2, 3).Difference(set.Of[int](1, 2, 3)), should.Equal, set.Of[int]())
+	should.So(t, set.Of[int](1).Difference(set.Of[int](1, 2, 3)), should.Equal, set.Of[int]())
 }
 func TestSymmetricDifference(t *testing.T) {
 	should.So(t, set.Of[int](1, 2, 3).SymmetricDifference(set.Of[int](4, 5, 6)), should.Equal, set.Of[int](1, 2, 3, 4, 5, 6))
