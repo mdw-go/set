@@ -10,18 +10,9 @@ func Make[T comparable](size int) Set[T] {
 func Of[T comparable](items ...T) (result Set[T]) {
 	return Make[T](len(items)).Add(items...)
 }
-func (s Set[T]) Empty() bool {
-	return s.Len() == 0
-}
-func (s Set[T]) Len() int {
-	return len(s)
-}
-func (s Set[T]) Slice() (result []T) {
-	result = make([]T, 0, len(s))
-	for item := range s {
-		result = append(result, item)
-	}
-	return result
+func (s Set[T]) Contains(item T) bool {
+	_, found := s[item]
+	return found
 }
 func (s Set[T]) Add(items ...T) Set[T] {
 	for _, item := range items {
@@ -35,15 +26,24 @@ func (s Set[T]) Remove(items ...T) Set[T] {
 	}
 	return s
 }
+func (s Set[T]) Empty() bool {
+	return s.Len() == 0
+}
+func (s Set[T]) Len() int {
+	return len(s)
+}
+func (s Set[T]) Slice() (result []T) {
+	result = make([]T, 0, len(s))
+	for item := range s {
+		result = append(result, item)
+	}
+	return result
+}
 func (s Set[T]) Clear() Set[T] {
 	for item := range s {
 		delete(s, item)
 	}
 	return s
-}
-func (s Set[T]) Contains(item T) bool {
-	_, found := s[item]
-	return found
 }
 func (s Set[T]) Equal(that Set[T]) bool {
 	if len(s) != len(that) {
