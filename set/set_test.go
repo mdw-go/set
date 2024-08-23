@@ -1,6 +1,7 @@
 package set_test
 
 import (
+	"slices"
 	"sort"
 	"testing"
 
@@ -42,6 +43,14 @@ func TestClear(t *testing.T) {
 }
 func TestSlice(t *testing.T) {
 	items := set.Of[int](1, 2, 3, 4, 5).Slice()
+	sort.Slice(items, func(i, j int) bool {
+		return items[i] < items[j]
+	})
+	should.So(t, len(items), should.Equal, 5)
+	should.So(t, items, should.Equal, []int{1, 2, 3, 4, 5})
+}
+func TestAll(t *testing.T) {
+	items := slices.Collect(set.Of[int](1, 2, 3, 4, 5).All())
 	sort.Slice(items, func(i, j int) bool {
 		return items[i] < items[j]
 	})

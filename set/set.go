@@ -3,6 +3,7 @@
 package set
 
 import (
+	"iter"
 	"maps"
 	"slices"
 )
@@ -37,8 +38,11 @@ func (s Set[T]) Empty() bool {
 func (s Set[T]) Len() int {
 	return len(s)
 }
+func (s Set[T]) All() iter.Seq[T] {
+	return maps.Keys(s)
+}
 func (s Set[T]) Slice() (result []T) {
-	return slices.Collect(maps.Keys(s))
+	return slices.Collect(s.All())
 }
 func (s Set[T]) Clear() Set[T] {
 	clear(s)
