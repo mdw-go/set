@@ -2,6 +2,11 @@
 // https://en.wikipedia.org/wiki/Set_(mathematics)
 package set
 
+import (
+	"maps"
+	"slices"
+)
+
 type Set[T comparable] map[T]struct{}
 
 func Make[T comparable](size int) Set[T] {
@@ -33,16 +38,10 @@ func (s Set[T]) Len() int {
 	return len(s)
 }
 func (s Set[T]) Slice() (result []T) {
-	result = make([]T, 0, len(s))
-	for item := range s {
-		result = append(result, item)
-	}
-	return result
+	return slices.Collect(maps.Keys(s))
 }
 func (s Set[T]) Clear() Set[T] {
-	for item := range s {
-		delete(s, item)
-	}
+	clear(s)
 	return s
 }
 func (s Set[T]) Equal(that Set[T]) bool {
