@@ -1,24 +1,24 @@
-# github.com/mdwhatcott/go-set
+# github.com/mdwhatcott/go-set/v2
 
 
-	package set // import "github.com/mdwhatcott/go-set/set"
+	package set // import "github.com/mdwhatcott/go-set/v2/set"
 	
 	Package set implements a generic set type. Finally!
 	https://en.wikipedia.org/wiki/Set_(mathematics)
 	
 	TYPES
 	
-	type Set[T comparable] map[T]nothing
+	type Set[T comparable] map[T]struct{}
 	
-	func From[T comparable](items ...T) (result Set[T])
+	func Make[T comparable](size int) Set[T]
 	
-	func FromMapKeys[K comparable, V any](m map[K]V) (result Set[K])
+	func Of[T comparable](items ...T) (result Set[T])
 	
-	func New[T comparable](size int) Set[T]
+	func (s Set[T]) Add(items ...T) Set[T]
 	
-	func (s Set[T]) Add(items ...T)
+	func (s Set[T]) All() iter.Seq[T]
 	
-	func (s Set[T]) Clear()
+	func (s Set[T]) Clear() Set[T]
 	
 	func (s Set[T]) Contains(item T) bool
 	
@@ -36,7 +36,7 @@
 	
 	func (s Set[T]) Len() int
 	
-	func (s Set[T]) Remove(items ...T)
+	func (s Set[T]) Remove(items ...T) Set[T]
 	
 	func (s Set[T]) Slice() (result []T)
 	
