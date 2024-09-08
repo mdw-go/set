@@ -16,6 +16,13 @@ func Make[T comparable](size int) Set[T] {
 func Of[T comparable](items ...T) (result Set[T]) {
 	return Make[T](len(items)).Add(items...)
 }
+func FromSeq[T comparable](seq iter.Seq[T]) (result Set[T]) {
+	result = make(Set[T])
+	for t := range seq {
+		result.Add(t)
+	}
+	return result
+}
 func (s Set[T]) Contains(item T) bool {
 	_, found := s[item]
 	return found

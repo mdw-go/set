@@ -10,6 +10,8 @@
 	
 	type Set[T comparable] map[T]struct{}
 	
+	func FromSeq[T comparable](seq iter.Seq[T]) (result Set[T])
+	
 	func Make[T comparable](size int) Set[T]
 	
 	func Of[T comparable](items ...T) (result Set[T])

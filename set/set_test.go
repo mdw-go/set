@@ -15,6 +15,7 @@ func TestCreation(t *testing.T) {
 	should.So(t, set.Of[int]().Len(), should.Equal, 0)
 	should.So(t, set.Of[int]().Empty(), should.BeTrue)
 	should.So(t, set.Of[int](1).Empty(), should.BeFalse)
+	should.So(t, set.FromSeq(set.Of(1, 2, 3).All()), should.Equal, set.Of(1, 2, 3))
 }
 func TestContains(t *testing.T) {
 	should.So(t, set.Of[int](1).Contains(1), should.BeTrue)
