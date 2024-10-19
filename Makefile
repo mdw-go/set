@@ -12,7 +12,7 @@ doc:
 		head -n 1 go.mod | sed 's/^module //' >> README.md && \
 		echo >> README.md && \
 		echo >> README.md && \
-		go doc -all github.com/mdw-go/go-set/v2/set  | sed 's/^/\t/' >> README.md
+		go doc -all github.com/mdw-go/set/v2/set  | sed 's/^/\t/' >> README.md
 
 onefile:
-	@go-mergepkg -dirs "set" -header "github.com/mdw-go/go-set/v2@$(shell git describe) (a little copy-paste is better than a little dependency)"
+	@go-mergepkg -dirs "set" -header "github.com/mdw-go/set/v2@$(shell git describe) (a little copy-paste is better than a little dependency)"

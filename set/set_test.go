@@ -5,8 +5,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/mdw-go/go-set/v2/internal/should"
-	"github.com/mdw-go/go-set/v2/set"
+	"github.com/mdw-go/set/v2/internal/should"
+	"github.com/mdw-go/set/v2/set"
 )
 
 func TestCreation(t *testing.T) {
