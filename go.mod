@@ -1,3 +1,3 @@
-module github.com/mdwhatcott/go-set/v2
+module github.com/mdw-go/go-set/v2
 
 go 1.23

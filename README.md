@@ -1,7 +1,7 @@
-# github.com/mdwhatcott/go-set/v2
+# github.com/mdw-go/go-set/v2
 
 
-	package set // import "github.com/mdwhatcott/go-set/v2/set"
+	package set // import "github.com/mdw-go/go-set/v2/set"
 	
 	Package set implements a generic set type. Finally!
 	https://en.wikipedia.org/wiki/Set_(mathematics)
